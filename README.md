@@ -7,7 +7,7 @@ Attributes
 ----------
 
 Tested and works on:
-  '''CentOS 6'''
+  `CentOS 6`
 #### zabbix-agent::default
 <table>
   <tr>
