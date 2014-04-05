@@ -24,5 +24,5 @@ template "#{node['zabbix']['config']}/zabbix_agentd.conf" do
 end
 
 service "#{node['zabbix']['service']}" do
-    action [ :enable, :start ]
+    action [ :start, :enable ]
 end
