@@ -4,7 +4,7 @@
 ############ GENERAL PARAMETERS #################
 
 ### Option: PidFile
-#	Name of PID file.
+#   Name of PID file.
 #
 # Mandatory: no
 # Default:
@@ -13,8 +13,8 @@
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 
 ### Option: LogFile
-#	Name of log file.
-#	If not set, syslog is used.
+#   Name of log file.
+#   If not set, syslog is used.
 #
 # Mandatory: no
 # Default:
@@ -23,8 +23,8 @@ PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix/zabbix_agentd.log
 
 ### Option: LogFileSize
-#	Maximum size of log file in MB.
-#	0 - disable automatic log rotation.
+#   Maximum size of log file in MB.
+#   0 - disable automatic log rotation.
 #
 # Mandatory: no
 # Range: 0-1024
@@ -34,12 +34,12 @@ LogFile=/var/log/zabbix/zabbix_agentd.log
 LogFileSize=0
 
 ### Option: DebugLevel
-#	Specifies debug level
-#	0 - no debug
-#	1 - critical information
-#	2 - error information
-#	3 - warnings
-#	4 - for debugging (produces lots of information)
+#   Specifies debug level
+#   0 - no debug
+#   1 - critical information
+#   2 - error information
+#   3 - warnings
+#   4 - for debugging (produces lots of information)
 #
 # Mandatory: no
 # Range: 0-4
@@ -47,25 +47,25 @@ LogFileSize=0
 # DebugLevel=3
 
 ### Option: SourceIP
-#	Source IP address for outgoing connections.
+#   Source IP address for outgoing connections.
 #
 # Mandatory: no
 # Default:
 # SourceIP=
 
 ### Option: EnableRemoteCommands
-#	Whether remote commands from Zabbix server are allowed.
-#	0 - not allowed
-#	1 - allowed
+#   Whether remote commands from Zabbix server are allowed.
+#   0 - not allowed
+#   1 - allowed
 #
 # Mandatory: no
 # Default:
 # EnableRemoteCommands=0
 
 ### Option: LogRemoteCommands
-#	Enable logging of executed shell commands as warnings.
-#	0 - disabled
-#	1 - enabled
+#   Enable logging of executed shell commands as warnings.
+#   0 - disabled
+#   1 - enabled
 #
 # Mandatory: no
 # Default:
@@ -74,19 +74,19 @@ LogFileSize=0
 ##### Passive checks related
 
 ### Option: Server
-#	List of comma delimited IP addresses (or hostnames) of Zabbix servers.
-#	Incoming connections will be accepted only from the hosts listed here.
-#	No spaces allowed.
-#	If IPv6 support is enabled then '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1' are treated equally.
+#   List of comma delimited IP addresses (or hostnames) of Zabbix servers.
+#   Incoming connections will be accepted only from the hosts listed here.
+#   No spaces allowed.
+#   If IPv6 support is enabled then '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1' are treated equally.
 #
 # Mandatory: no
 # Default:
 # Server=
 
-Server=<%= node['zabbix']['ipaddress'] %>
+Server=<%= node['zabbix']['client']['ipaddress'] %>
 
 ### Option: ListenPort
-#	Agent will listen on this port for connections from the server.
+#   Agent will listen on this port for connections from the server.
 #
 # Mandatory: no
 # Range: 1024-32767
@@ -94,16 +94,16 @@ Server=<%= node['zabbix']['ipaddress'] %>
 # ListenPort=10050
 
 ### Option: ListenIP
-#	List of comma delimited IP addresses that the agent should listen on.
-#	First IP address is sent to Zabbix server if connecting to it to retrieve list of active checks.
+#   List of comma delimited IP addresses that the agent should listen on.
+#   First IP address is sent to Zabbix server if connecting to it to retrieve list of active checks.
 #
 # Mandatory: no
 # Default:
 # ListenIP=0.0.0.0
 
 ### Option: StartAgents
-#	Number of pre-forked instances of zabbix_agentd that process passive checks.
-#	If set to 0, disables passive checks and the agent will not listen on any TCP port.
+#   Number of pre-forked instances of zabbix_agentd that process passive checks.
+#   If set to 0, disables passive checks and the agent will not listen on any TCP port.
 #
 # Mandatory: no
 # Range: 0-100
@@ -113,40 +113,40 @@ Server=<%= node['zabbix']['ipaddress'] %>
 ##### Active checks related
 
 ### Option: ServerActive
-#	List of comma delimited IP:port (or hostname:port) pairs of Zabbix servers for active checks.
-#	If port is not specified, default port is used.
-#	IPv6 addresses must be enclosed in square brackets if port for that host is specified.
-#	If port is not specified, square brackets for IPv6 addresses are optional.
-#	If this parameter is not specified, active checks are disabled.
-#	Example: ServerActive=10.13.37.24:20051,zabbix.domain,[::1]:30051,::1,[12fc::1]
+#   List of comma delimited IP:port (or hostname:port) pairs of Zabbix servers for active checks.
+#   If port is not specified, default port is used.
+#   IPv6 addresses must be enclosed in square brackets if port for that host is specified.
+#   If port is not specified, square brackets for IPv6 addresses are optional.
+#   If this parameter is not specified, active checks are disabled.
+#   Example: ServerActive=10.13.37.24:20051,zabbix.domain,[::1]:30051,::1,[12fc::1]
 #
 # Mandatory: no
 # Default:
 # ServerActive=
 
-ServerActive=<%= node['zabbix']['ipaddress'] %>
+ServerActive=<%= node['zabbix']['client']['ipaddress'] %>
 
 ### Option: Hostname
-#	Unique, case sensitive hostname.
-#	Required for active checks and must match hostname as configured on the server.
-#	Value is acquired from HostnameItem if undefined.
+#   Unique, case sensitive hostname.
+#   Required for active checks and must match hostname as configured on the server.
+#   Value is acquired from HostnameItem if undefined.
 #
 # Mandatory: no
 # Default:
 # Hostname=
 
-# Hostname=log.prothon.lab
+# Hostname=
 
 ### Option: HostnameItem
-#	Item used for generating Hostname if it is undefined.
-#	Ignored if Hostname is defined.
+#   Item used for generating Hostname if it is undefined.
+#   Ignored if Hostname is defined.
 #
 # Mandatory: no
 # Default:
 HostnameItem=system.hostname
 
 ### Option: RefreshActiveChecks
-#	How often list of active checks is refreshed, in seconds.
+#   How often list of active checks is refreshed, in seconds.
 #
 # Mandatory: no
 # Range: 60-3600
@@ -154,7 +154,7 @@ HostnameItem=system.hostname
 # RefreshActiveChecks=120
 
 ### Option: BufferSend
-#	Do not keep data longer than N seconds in buffer.
+#   Do not keep data longer than N seconds in buffer.
 #
 # Mandatory: no
 # Range: 1-3600
@@ -162,8 +162,8 @@ HostnameItem=system.hostname
 # BufferSend=5
 
 ### Option: BufferSize
-#	Maximum number of values in a memory buffer. The agent will send
-#	all collected data to Zabbix Server or Proxy if the buffer is full.
+#   Maximum number of values in a memory buffer. The agent will send
+#   all collected data to Zabbix Server or Proxy if the buffer is full.
 #
 # Mandatory: no
 # Range: 2-65535
@@ -171,10 +171,10 @@ HostnameItem=system.hostname
 # BufferSize=100
 
 ### Option: MaxLinesPerSecond
-#	Maximum number of new lines the agent will send per second to Zabbix Server
-#	or Proxy processing 'log' and 'logrt' active checks.
-#	The provided value will be overridden by the parameter 'maxlines',
-#	provided in 'log' or 'logrt' item keys.
+#   Maximum number of new lines the agent will send per second to Zabbix Server
+#   or Proxy processing 'log' and 'logrt' active checks.
+#   The provided value will be overridden by the parameter 'maxlines',
+#   provided in 'log' or 'logrt' item keys.
 #
 # Mandatory: no
 # Range: 1-1000
@@ -182,10 +182,10 @@ HostnameItem=system.hostname
 # MaxLinesPerSecond=100
 
 ### Option: AllowRoot
-#	Allow the agent to run as 'root'. If disabled and the agent is started by 'root', the agent
+#   Allow the agent to run as 'root'. If disabled and the agent is started by 'root', the agent
 #       will try to switch to user 'zabbix' instead. Has no effect if started under a regular user.
-#	0 - do not allow
-#	1 - allow
+#   0 - do not allow
+#   1 - allow
 #
 # Mandatory: no
 # Default:
@@ -194,14 +194,14 @@ HostnameItem=system.hostname
 ############ ADVANCED PARAMETERS #################
 
 ### Option: Alias
-#	Sets an alias for parameter. It can be useful to substitute long and complex parameter name with a smaller and simpler one.
+#   Sets an alias for parameter. It can be useful to substitute long and complex parameter name with a smaller and simpler one.
 #
 # Mandatory: no
 # Range:
 # Default:
 
 ### Option: Timeout
-#	Spend no more than Timeout seconds on processing
+#   Spend no more than Timeout seconds on processing
 #
 # Mandatory: no
 # Range: 1-30
@@ -209,8 +209,8 @@ HostnameItem=system.hostname
 # Timeout=3
 
 ### Option: Include
-#	You may include individual files or all files in a directory in the configuration file.
-#	Installing Zabbix will create include directory in /usr/local/etc, unless modified during the compile time.
+#   You may include individual files or all files in a directory in the configuration file.
+#   Installing Zabbix will create include directory in /usr/local/etc, unless modified during the compile time.
 #
 # Mandatory: no
 # Default:
@@ -224,9 +224,9 @@ Include=/etc/zabbix/zabbix_agentd.d/
 ####### USER-DEFINED MONITORED PARAMETERS #######
 
 ### Option: UnsafeUserParameters
-#	Allow all characters to be passed in arguments to user-defined parameters.
-#	0 - do not allow
-#	1 - allow
+#   Allow all characters to be passed in arguments to user-defined parameters.
+#   0 - do not allow
+#   1 - allow
 #
 # Mandatory: no
 # Range: 0-1
@@ -234,9 +234,9 @@ Include=/etc/zabbix/zabbix_agentd.d/
 # UnsafeUserParameters=0
 
 ### Option: UserParameter
-#	User-defined parameter to monitor. There can be several user-defined parameters.
-#	Format: UserParameter=<key>,<shell command>
-#	See 'zabbix_agentd' directory for examples.
+#   User-defined parameter to monitor. There can be several user-defined parameters.
+#   Format: UserParameter=<key>,<shell command>
+#   See 'zabbix_agentd' directory for examples.
 #
 # Mandatory: no
 # Default:
