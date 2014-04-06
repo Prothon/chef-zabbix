@@ -10,19 +10,3 @@ cookbook_file "/etc/yum.repos.d/zabbix.repo" do
     source "zabbix.repo"
     mode "0644"
 end
-
-package "#{node['zabbix']['service']}" do
-    action :install
-end
-
-template "#{node['zabbix']['config']}/zabbix_agentd.conf" do
-    source "zabbix_agentd.conf.erb"
-    mode "0644"
-    owner = "root"
-    group = "root"
-    notifies :restart, "service[zabbix-agent]", :immediately
-end
-
-service "#{node['zabbix']['service']}" do
-    action [ :start, :enable ]
-end

@@ -16,17 +16,17 @@ Tested and works on:
     <th>Description</th>
   </tr>
   <tr>
-    <td><tt>['zabbix-agent']['ipaddress']</tt></td>
+    <td><tt>['zabbix-agent']['server']['ipaddress']</tt></td>
     <td>String</td>
     <td>This holds the IP address of the zabbix server.</td>
   </tr>
   <tr>
-    <td><tt>['zabbix-agent']['config']</tt></td>
+    <td><tt>['zabbix-agent']['client']['config']</tt></td>
     <td>String</td>
     <td>This is the location of the zabbix config directory.</td>
   </tr>
   <tr>
-    <td><tt>['zabbix-agent']['service']</tt></td>
+    <td><tt>['zabbix-agent']['client']['service']</tt></td>
     <td>String</td>
     <td>This is just the service name.</td>
   </tr>
