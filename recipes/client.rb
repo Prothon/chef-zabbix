@@ -1,3 +1,5 @@
+include_recipe 'chef-zabbix::repo'
+
 package "#{node['zabbix']['client']['service']}" do
     action :install
 end
