@@ -32,6 +32,10 @@ Tested and works on:
   </tr>
 </table>
 
+Usage
+------------
+###### chef-zabbix::client
+
 Contributing
 ------------
 1. Fork the repository on Github
